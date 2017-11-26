@@ -1,0 +1,16 @@
+{
+  "name": "fructosebot",
+  "version": "0.0.1",
+  "description": "A talkative Telegram bot.\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "config.json": "0.0.4",
+    "mysql": "^2.15.0",
+    "telegraf": "^3.16.3"
+  }
+}
