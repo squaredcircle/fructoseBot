@@ -34,7 +34,7 @@ function updateUserInDatabase(user, next)
         user.level = results[0].level;
         user.coin = results[0].coin;
         user.income_last = results[0].income_last;
-        return next(user);
+        return next();
     })
 }
 
@@ -76,15 +76,29 @@ function updateChatInDatabase(chat, user)
     })
 }
 
+function getUserChatStats(user_id, chat_id)
+{
+    if (typeof(chat_id) !== 'undefined')
+    {
+        db.query('SELECT * FROM WHERE user_id = ?', [user_id], function(error, results) {
+            return results
+        })
+    }
+    else
+    {
+        db.query('SELECT * FROM WHERE user_id = ? AND chat_id = ?', [user_id, chat_id], function(error, results) {
+            return results
+        })
+    }
+}
+
 bot.use((ctx,next) => {
 
     updateChatInDatabase(ctx.message.chat, ctx.message.from)
-    updateUserInDatabase(ctx.message.from, function(user) {
-        console.log(user)
-
+    updateUserInDatabase(ctx.message.from, function() {
         ctx.reply(ctx.message)
         return next(ctx).then(() => {
-            console.log('END')
+
         })
     })
 })
