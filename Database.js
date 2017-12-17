@@ -40,7 +40,7 @@ class Database
         {
             if (results.length > 0)
             {
-                this.con.query('UPDATE chats SET title = ?, username = ?, first_name = ?, last_name = ?, description = ?, invite_link = ? WHERE chat_id = ?',
+                this.con.query('UPDATE chats SET title = ?, username = ?, first_name = ?, last_name = ?, description = ?, invite_link = ? WHERE id = ?',
                     [chat.title, chat.username, chat.first_name, chat.last_name, chat.description, chat.invite_link, chat.id])
             }
             else
