@@ -21,15 +21,19 @@ class Database
             {
                 this.con.query('UPDATE users SET is_bot = ?, first_name = ?, last_name = ?, username = ?, language_code = ? WHERE id = ?',
                     [user.is_bot, user.first_name, user.last_name, user.username, user.language_code, user.id])
+                user.level = results[0].level
+                user.coin = results[0].coin
+                user.income_last = results[0].income_last
             }
             else
             {
                 this.con.query('INSERT INTO users (id, is_bot, first_name, last_name, username, language_code) VALUES (?, ?, ?, ?, ?, ?)',
                     [user.id, user.is_bot, user.first_name, user.last_name, user.username, user.language_code])
+                user.level = 0
+                user.coin = 0
+                user.income_last = null
             }
-            user.level = results[0].level;
-            user.coin = results[0].coin;
-            user.income_last = results[0].income_last;
+
             return next();
         })
     }
