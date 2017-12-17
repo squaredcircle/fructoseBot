@@ -63,7 +63,7 @@ function chatLeaderboard(chat_id, days, next) {
     db.getChatPostLeaderboard(chat_id, days, function(leaderboard) {
         let lines = ""
         leaderboard.forEach((i, index) => {
-            lines += `<code>${getGetOrdinal(index+1)}</code> ${User.getFullName(i)}\n`
+            lines += `<code>${getGetOrdinal(index+1)}</code> ${User.getFullName(i)} (<i>${i['SUM(posts)']}</i>)\n`
         })
         return next(lines)
     })
