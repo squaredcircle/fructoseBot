@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "config.json": "0.0.4",
+    "moment": "^2.20.0",
     "mysql": "^2.15.0",
     "telegraf": "^3.16.3"
   }
