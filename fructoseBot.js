@@ -70,7 +70,7 @@ function chatLeaderboard(chat_id, days, next) {
 }
 
 bot.command('/help', function(ctx, next) {
-    const days = 14
+    const days = 7
     db.getUserChatStats(ctx.message.from.id, ctx.message.chat.id, days, function(stats) {
         const posts_total = stats.reduce((acc,cur) => acc + cur.posts, 0)
         const posts_daily = Math.round(posts_total/days)

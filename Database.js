@@ -94,7 +94,8 @@ class Database
             WHERE chat_id = ?` +
             (typeof days === 'undefined' ? '' : ' AND s.date > DATE(NOW()) + INTERVAL -? DAY')
             + ` GROUP BY user_id
-            ORDER BY SUM(posts) DESC`,
+            ORDER BY SUM(posts) DESC
+            LIMIT 10`,
             [chat_id, days], function(error, results) { next(results) }
         )
     }
