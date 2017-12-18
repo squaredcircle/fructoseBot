@@ -29,7 +29,7 @@ class Database
             {
                 this.con.query('INSERT INTO users (id, is_bot, first_name, last_name, username, language_code) VALUES (?, ?, ?, ?, ?, ?)',
                     [user.id, user.is_bot, user.first_name, user.last_name, user.username, user.language_code])
-                user.level = 0
+                user.level = 1
                 user.coin = 0
                 user.income_last = null
             }
@@ -93,7 +93,8 @@ class Database
             ON s.user_id = u.id 
             WHERE chat_id = ?` +
             (typeof days === 'undefined' ? '' : ' AND s.date > DATE(NOW()) + INTERVAL -? DAY')
-            + ` ORDER BY SUM(posts) DESC`,
+            + ` GROUP BY user_id
+            ORDER BY SUM(posts) DESC`,
             [chat_id, days], function(error, results) { next(results) }
         )
     }
