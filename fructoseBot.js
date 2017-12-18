@@ -14,7 +14,7 @@ const User = require('./User.js')
 const bot = new Telegraf(config.BOT_TOKEN, {username: config.BOT_USERNAME})
 const db = new Database(config.DB_HOST, config.DB_USER, config.DB_PASSWORD, config.DB_DATABASE)
 
-bot.use((ctx,next) => {
+bot.on('message', (ctx,next) => {
     db.updateChat(ctx.message.chat, ctx.message.from)
     db.updateUser(ctx.message.from, function() {
         return next(ctx).then(() => { })
