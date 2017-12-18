@@ -7,7 +7,7 @@ class User
 
     static getFullName (user)
     {
-        return typeof user.last_name === 'undefined'
+        return user.last_name === null
             ? `<b>${user.first_name}</b>` : `<b>${user.first_name} ${user.last_name}</b>`
     }
 
